@@ -1,16 +1,21 @@
 {% extends "teste/base.html" %}
 {% block body_block %}
-{% verbatim %}
+
+
 <div class="align-center boxhome">
     <div id="handle"></div>
+    {% if user.is_authenticated %}
+    {% verbatim %}
     <script id="test-template" type="text/x-handlebars-template">
         <div>
             <h1>{{title}}</h1>
-            <h1>Clique na aba {{movies}} para ver os filmes disponíveis! </h1>
-            <h1 id="teste"></h1>
+            <h1>Clique na aba {{movies}} para ver os filmes disponíveis! </h1>   
         </div>
     </script>
+    {% endverbatim %}
+    {% else %}
+        <h1>Cadastra-se para ter acesso ao site!</h1>
+    {% endif %}
 </div>
-
-{% endverbatim %}
+        
 {% endblock %}

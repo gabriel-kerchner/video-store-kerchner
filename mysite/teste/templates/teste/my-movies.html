@@ -1,0 +1,20 @@
+{% extends "teste/base.html" %}
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="box">Meus Filmes</h2>
+        </div>
+    </div>
+    {% if movies %}
+    <div class="row boxMovie">
+        <div class="col-md-3">
+            <div class="list-group">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+            
+</div>
+
+{% endblock body_block %}

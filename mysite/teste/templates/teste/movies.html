@@ -1,5 +1,6 @@
 {% extends "teste/base.html" %}
 {% block body_block %}
+{% load static %}
 
 <div class="container">
     <div class="row">
@@ -21,6 +22,11 @@
                 <label class="list-group-item"><a href="{% url 'teste:info' movie.id %}"><strong>Título:</strong> {{movie.titulo}}</label></a>
                 <label class="list-group-item"><strong>Gênero:</strong> {{movie.genero}}</label> 
                 <label class="list-group-item"><strong>Ano:</strong> {{movie.ano}}</label>
+                <label class="list-group-item">
+                    <a href="#" class="btn btn-dark mr-sm-2 my-2 my-lg-0" role='button'>
+                        <img src=" {% static 'images/icons/favourite.png' %}" id="icon" alt="">
+                        <span> Adicionar a minha lista</span>
+                    </a>
                 <div class="col"><hr></div>
             </div>
         </div>

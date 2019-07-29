@@ -25,5 +25,7 @@ urlpatterns = [
     path('info/<int:movie_id>', views.infoMovie, name="info"),
     path('search/', views.searchMovie, name='search'),
     path('register/', views.register, name='register'),
-    path('login/', views.user_login, name='login')
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='logout'),
+    path('meus-filmes/', views.myMovies.as_view(), name='my-movies')
 ]

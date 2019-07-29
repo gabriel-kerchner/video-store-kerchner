@@ -26,3 +26,5 @@ $('.card-deck a').fancybox({
       return $(this).parent().find('.card-text').html();
     }
   });
+
+

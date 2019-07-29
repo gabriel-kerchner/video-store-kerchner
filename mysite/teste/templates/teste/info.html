@@ -1,5 +1,6 @@
 {% extends "teste/base.html" %}
 {% block body_block %}
+{% load static %}
 
 <div class="container">
     <div class="row">
@@ -21,11 +22,23 @@
                 <label class="list-group-item"><strong>Sinopse:</strong> {{movie.sinopse}}</label>
                 <div class="card-deck">
                     <div class="card">
-                        <label class="list-group-item"><strong>Clique ao lado para ver o trailer! <a data-fancybox href="{{movie.trailer}}"><i class="material-icons md-36 align-middle">movie</i></a></strong></label>
+                        <label class="list-group-item">
+                            <strong>Clique ao lado para ver o trailer! 
+                                <a data-fancybox href="{{movie.trailer}}">
+                                    <i class="material-icons md-36 align-middle">
+                                        movie
+                                    </i>
+                                </a>
+                            </strong>
+                            <a href="#" class="btn btn-dark mr-sm-2 my-2 my-lg-0 ml-3" role='button'>
+                                <img src=" {% static 'images/icons/favourite.png' %}" id="icon" alt="">
+                                <span> Adicionar a minha lista</span>
+                            </a>
+                        </label>      
                     </div>
                 </div>
-            
             </div>
+            <div class="col"><hr></div>
         </div>
     </div>
 </div>

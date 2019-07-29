@@ -26,7 +26,7 @@ SECRET_KEY = 'p=j8nbyi*=vi#h+yzp_v*rh(@pbkzpp(k&se-$-(woz0dvn$om'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.88.144', '127.0.0.1']
 
 
 # Application definition
@@ -39,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'teste',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,3 +143,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # LOGIN INFORMATION:
 LOGIN_URL = '/teste/login'
+
+#Send Email 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'locadorakerchner@gmail.com'
+EMAIL_HOST_PASSWORD = 'projeto-1'

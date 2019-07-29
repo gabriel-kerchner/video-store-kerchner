@@ -45,6 +45,13 @@ body{
 }
 
 #iconUser{
-    height: 22px;
     filter: invert(1);
+    height: 22px;
+}
+.marginHome{
+    margin-top: 20px;
+}
+
+#icon{
+    height: 22px;
 }

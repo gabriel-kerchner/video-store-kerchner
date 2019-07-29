@@ -1,10 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Movie
+from .models import Movie, Favorite, UserProfile
 from .forms import UserForm
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.views import generic
 import json
+
+
 
 # Create your views here.
 
@@ -26,7 +31,7 @@ def searchMovie(request):
         titulo = request.GET.get('titulo', None)
     else:
         titulo = ''
-    movies = Movie.objects.filter(titulo__startswith=titulo)   
+    movies = Movie.objects.filter(titulo__contains=titulo)   
     return render(request, 'teste/ajax-search.html', {'movies':movies})
 
 def register(request):
@@ -43,6 +48,12 @@ def register(request):
             user.save()
 
             registered = True
+            
+            send_mail(
+            'Cadastro realizado com sucesso!',
+            'Obrigado por se cadastrar em nosso site!',
+            'locadorakerchner@gmail.com',
+            [user.email], fail_silently=False)
         else:
             print(user_form.errors)
     else:
@@ -57,7 +68,8 @@ def user_login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = authenticate(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
+       
 
         if user:
         
@@ -70,9 +82,27 @@ def user_login(request):
     
                 return HttpResponse("Your account is not active.")
         else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(username,password))
-            return HttpResponse("Invalid login details supplied.")
+            print("Erro ao login.")
+            print("Campos: username: {} e password: {}".format(username,password))
+            return HttpResponse("Dados incorretos no login.")
 
     else:
         return render(request, 'teste/login.html', {})
+
+
+@login_required
+def user_logout(request):
+    # Log out the user.
+    logout(request)
+    # Return to homepage.
+    return HttpResponseRedirect(reverse('teste:home'))
+
+
+class myMovies(generic.ListView):
+
+    model = Favorite
+    template_name = 'teste/my-movies.html'
+    
+    def get_queryset(self):
+        return UserProfile.movies
+  

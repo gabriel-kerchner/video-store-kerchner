@@ -1,18 +1,23 @@
 {% extends 'teste/base.html' %}
 {% block body_block %}
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron marginHome">
       <h1>Login</h1>
 
-        <form method="post" action="{% url 'teste:login' %}">
+        <form method="post" action="{% url 'teste:login' %}" class="form-inline">
           {% csrf_token %}
-          <label for="username">Username:</label>
-          <input type="text" name="username" placeholder="Username">
+          <label class="sr-only" for="username">Username</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="text" class="form-control" id="username" name='username' placeholder="Username">
+            </div>
 
-          <label for="password"></label>
-          <input type="password" name="password">
+          <label class="sr-only" for="password"></label>
+          <input class="form-control mb-2 mr-sm-2" type="password" name="password" placeholder="Password">
 
-          <input type="submit" name="" value="Login">
+          <input class="btn btn-primary" type="submit" name="" value="Login">
 
         </form>
 

@@ -1,0 +1,50 @@
+#logo{
+    height: 70px;
+    width: auto;
+}
+
+body{
+    background: url("/static/images/fundo.jpg");
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', serif;
+}
+
+.boxhome{
+    background-color: white;
+    margin-top: 20%;
+    text-align: center;
+ 
+}
+
+.box{
+    background-color: white;
+    text-align: center;
+    margin: 10px 0px 20px;   
+
+
+}
+
+.poster{
+    max-width: 200px;
+    max-height: 400px;
+    height: auto;
+    width: auto;
+    
+}
+.list-group{
+    margin: 20px 0 20px;
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.boxMovie{
+    background-color: white;
+}
+
+#iconUser{
+    height: 22px;
+    filter: invert(1);
+}

@@ -1,0 +1,29 @@
+{
+    "python.pythonPath": "C:\\Users\\gkerchner\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "highlight-matching-tag.styles": {
+        "opening": {
+          "left": {
+            "underline": "yellow"
+          },
+          "right": {
+            "surround": "#155FFA"
+          },
+          "name": {
+            "highlight": "rgba(180, 20, 80, 0.3)"
+          }
+        },
+        "closing": {
+            "left": {
+                "underline": "yellow"
+              },
+              "right": {
+                "surround": "#155FFA"
+              },
+              "name": {
+                "highlight": "rgba(180, 20, 80, 0.3)"
+              }
+        }
+      }
+}

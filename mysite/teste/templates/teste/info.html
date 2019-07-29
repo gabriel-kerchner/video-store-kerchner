@@ -1,0 +1,33 @@
+{% extends "teste/base.html" %}
+{% block body_block %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class='box'>Informações sobre {{movie.titulo}}</h2>
+        </div>
+    </div>
+    <div class="row boxMovie">
+        <div class="col-md-3">
+            <div class="list-group">
+                <span class="list-group-item"><img class="poster" src="/{{movie.poster}}" alt=""></span>  
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="list-group">
+                <label class="list-group-item"><strong>Título:</strong> {{movie.titulo}}</label>
+                <label class="list-group-item"><strong>Gênero:</strong> {{movie.genero}}</label>
+                <label class="list-group-item"><strong>Ano:</strong> {{movie.ano}}</label>
+                <label class="list-group-item"><strong>Sinopse:</strong> {{movie.sinopse}}</label>
+                <div class="card-deck">
+                    <div class="card">
+                        <label class="list-group-item"><strong>Clique ao lado para ver o trailer! <a data-fancybox href="{{movie.trailer}}"><i class="material-icons md-36 align-middle">movie</i></a></strong></label>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+  
+{% endblock %}

@@ -1,0 +1,28 @@
+{% block body_block %}
+<div class="container">
+    
+</div>
+<div class="container">
+    <h2 class="box">Resultado da pesquisa</h2>
+    <ul class=" list-group search-results">
+            {% if movies.count > 0 %}
+    
+            {% for movie in movies %}
+            <li class="list-group-item"><img class="poster" src="{{movie.poster}}" alt=""></li> 
+            <li class="list-group-item"><a href="{% url 'teste:info' movie.id %}"><strong>Título:</strong> {{movie.titulo}}</li> </a>
+            <li class="list-group-item"><strong>Genero:</strong> {{movie.genero}}</li> 
+            <li class="list-group-item"><strong>Ano:</strong> {{movie.ano}}</li>
+            <li class="empty"></li>
+            {% endfor %}
+            
+            {% else %}
+            
+            <h2 class="box">Nenhum filme encontrado</h2>
+            
+            {% endif %}
+    </ul>
+        
+</div>
+
+
+{% endblock body_block %}

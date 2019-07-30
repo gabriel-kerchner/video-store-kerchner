@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Movie, Favorite, UserProfile
+from .models import Movie, Favorite
 from .forms import UserForm
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -102,7 +102,13 @@ class myMovies(generic.ListView):
 
     model = Favorite
     template_name = 'teste/my-movies.html'
-    
+
+
     def get_queryset(self):
-        return UserProfile.movies
+        return Favorite.movie
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['movie'] = self.model.user
+        return context
   

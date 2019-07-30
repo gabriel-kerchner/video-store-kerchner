@@ -4,8 +4,8 @@ $(document).ready(function (){
     var template = Handlebars.compile(source);
 
     var context = {
-        title: "Seja bem vindo a Locadora Kerchner!",
-        movies: "Filmes"
+        title: "Seja bem vindo(a) a Locadora Kerchner!",
+        movies: '"Filmes"'
     }
     var implement = template(context);
     $("#handle").html(implement);

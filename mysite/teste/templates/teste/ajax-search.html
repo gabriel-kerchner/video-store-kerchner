@@ -10,7 +10,7 @@
             {% for movie in movies %}
             <li class="list-group-item"><img class="poster" src="{{movie.poster}}" alt=""></li> 
             <li class="list-group-item"><a href="{% url 'teste:info' movie.id %}"><strong>Título:</strong> {{movie.titulo}}</li> </a>
-            <li class="list-group-item"><strong>Genero:</strong> {{movie.genero}}</li> 
+            <li class="list-group-item"><strong>Gênero:</strong> {{movie.genero}}</li> 
             <li class="list-group-item"><strong>Ano:</strong> {{movie.ano}}</li>
             <li class="empty"></li>
             {% endfor %}

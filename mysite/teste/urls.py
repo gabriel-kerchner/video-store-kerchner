@@ -21,11 +21,13 @@ from teste import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('filmes', views.movies, name="movies"),
-    path('info/<int:movie_id>', views.infoMovie, name="info"),
-    path('search/', views.searchMovie, name='search'),
+    path('filmes', views.get_movies, name="movies"),
+    path('info/<int:movie_id>', views.get_info_movie, name="info"),
+    path('search/', views.search_movie, name='search'),
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
-    path('meus-filmes/', views.myMovies.as_view(), name='my-movies')
+    path('meus-filmes/', views.get_favorite_movies, name='my-movies'),
+    path('meus-filmes/delete/<int:movie_id>', views.remove_favorite_movie, name="delete"),
+    path('filmes/adicionar/<int:movie_id>/', views.add_favorite_movie, name='adicionar')
 ]

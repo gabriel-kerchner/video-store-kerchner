@@ -22,11 +22,20 @@
                 <label class="list-group-item"><a href="{% url 'teste:info' movie.id %}"><strong>Título:</strong> {{movie.titulo}}</label></a>
                 <label class="list-group-item"><strong>Gênero:</strong> {{movie.genero}}</label> 
                 <label class="list-group-item"><strong>Ano:</strong> {{movie.ano}}</label>
+                {% if movie.id not in favorite_movies_ids %}
                 <label class="list-group-item">
-                    <a href="#" class="btn btn-dark mr-sm-2 my-2 my-lg-0" role='button'>
+                    <a href="{% url 'teste:adicionar' movie.id %}" class="btn btn-dark mr-sm-2 my-2 my-lg-0" role='button' id="addList">
                         <img src=" {% static 'images/icons/favourite.png' %}" id="icon" alt="">
                         <span> Adicionar a minha lista</span>
                     </a>
+                </label>
+                {% endif %}
+                <!--<label class="list-group-item">
+                    <a href="{% url 'teste:delete' movie.id %}" class="btn btn-dark mr-sm-2 my-2 my-lg-0" role='button' id="removeList" style="visibility: hidden">
+                        <img src=" {% static 'images/icons/x-button.png' %}" id="icon" alt="">
+                        <span> Remover da minha lista</span>
+                    </a>
+                </label>-->
                 <div class="col"><hr></div>
             </div>
         </div>

@@ -3,30 +3,32 @@ from .models import Movie, Favorite
 from .forms import UserForm
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.views import generic
 import json
-
-
+from django.contrib import messages
 
 # Create your views here.
 
 def home(request):
     return render(request,'teste/home.html')
 
-def movies(request):
+def get_movies(request):
     list_movie = Movie.objects.order_by('titulo')
-    context = {'movies': list_movie}
+    favorite_movies = Favorite.objects.filter(user=request.user)
+    favorite_movies_ids = [favorite_movie.movie_id for favorite_movie in favorite_movies]
+    
+    context = {'movies': list_movie, 'favorite_movies_ids': favorite_movies_ids}
     return render(request,'teste/movies.html', context)
 
-def infoMovie(request, movie_id):
+def get_info_movie(request, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     context = {'movie': movie}
     return render(request, 'teste/info.html', context)
 
-def searchMovie(request):
+def search_movie(request):
     if request.method == "GET":
         titulo = request.GET.get('titulo', None)
     else:
@@ -97,18 +99,23 @@ def user_logout(request):
     # Return to homepage.
     return HttpResponseRedirect(reverse('teste:home'))
 
+def get_favorite_movies(request):
 
-class myMovies(generic.ListView):
+    favorite_movies = Favorite.objects.filter(user=request.user)
+    return render(request, 'teste/my-movies.html', {'favorite_movies': favorite_movies})
 
-    model = Favorite
-    template_name = 'teste/my-movies.html'
+def remove_favorite_movie(request, movie_id):
+
+    favorite = Favorite.objects.filter(user=request.user)
+    movie = get_object_or_404(favorite, pk=movie_id)
+
+    movie.delete()
+    return HttpResponseRedirect(reverse('teste:my-movies'))
+
+def add_favorite_movie(request, movie_id):
+
+    favorite = Favorite(movie_id=movie_id, user_id=request.user.id)
+    favorite.save()
+    return HttpResponseRedirect(reverse('teste:movies'))
 
 
-    def get_queryset(self):
-        return Favorite.movie
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['movie'] = self.model.user
-        return context
-  

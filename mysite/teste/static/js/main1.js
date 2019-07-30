@@ -27,4 +27,10 @@ $('.card-deck a').fancybox({
     }
   });
 
+$(document).ready(function (){
+
+    $('#addList').click().style.visibility = 'hidden'
+    $("#removeList").click().style.visibility = 'visible';
+
+});
 

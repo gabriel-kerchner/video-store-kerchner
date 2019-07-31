@@ -15,6 +15,9 @@ from django.contrib import messages
 def home(request):
     return render(request,'teste/home.html')
 
+def about(request):
+    return render(request, 'teste/about.html')
+
 def get_movies(request):
     list_movie = Movie.objects.order_by('titulo')
     favorite_movies = Favorite.objects.filter(user=request.user)

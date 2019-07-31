@@ -27,7 +27,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
-    path('meus-filmes/', views.get_favorite_movies, name='my-movies'),
+    path('favoritos/', views.get_favorite_movies, name='my-movies'),
     path('meus-filmes/delete/<int:movie_id>', views.remove_favorite_movie, name="delete"),
-    path('filmes/adicionar/<int:movie_id>/', views.add_favorite_movie, name='adicionar')
+    path('filmes/adicionar/<int:movie_id>/', views.add_favorite_movie, name='adicionar'),
+    path('sobre/', views.about, name='about')
 ]

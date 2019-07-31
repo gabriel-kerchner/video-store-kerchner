@@ -10,27 +10,19 @@
     <div class="row boxMovie">
         {% if favorite_movies  %}
         {% for movie in favorite_movies %}
-        <div class="col-md-3">
+        <div class="col-sm-3">
             <div class="list-group">
-                <span class="list-group-item"><img class="poster" src="/{{movie.movie.poster}}"></span>
-                <div class="col"><hr></div>
+                <span class="list-group-item rounded mx-auto d-block"><a href="{% url 'teste:info' movie.movie.id %}"><img class="poster" src="/{{movie.movie.poster}}"></span></a>
             </div>
+            <div class="col"><hr></div>
+            <a href="{% url 'teste:delete' movie.id %}" class="btn btn-dark mr-sm-2 my-2 my-lg-0" role='button' style="margin-left: 15px;">
+                <img src=" {% static 'images/icons/x-button.png' %}" id="icon" alt="">
+                <span> Remover da minha lista</span>
+            </a>
+            <div class="col"><hr></div>
         </div>
-        <div class="col-md-9">
-            <div class="list-group">
-                <label class="list-group-item"><a href="{% url 'teste:info' movie.movie.id %}"><strong>Título:</strong> {{movie.movie.titulo}}</label></a>
-                <label class="list-group-item"><strong>Gênero:</strong> {{movie.movie.genero}}</label> 
-                <label class="list-group-item"><strong>Ano:</strong> {{movie.movie.ano}}</label>
-                <label class="list-group-item">
-                    <a href="{% url 'teste:delete' movie.id %}" class="btn btn-dark mr-sm-2 my-2 my-lg-0" role='button'>
-                        <img src=" {% static 'images/icons/x-button.png' %}" id="icon" alt="">
-                        <span> Remover da minha lista</span>
-                    </a>
-                </label>
-                <div class="col"><hr></div>
-            </div>
-        </div> 
-    {% endfor %}
+        {% endfor %}
+    
     </div>
     {% else %}
     </div>

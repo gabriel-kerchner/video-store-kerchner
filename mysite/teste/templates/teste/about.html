@@ -1,0 +1,20 @@
+{% extends "teste/base.html" %}
+{% block body_block %}
+{% load static %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="box">Sobre</h2>
+        </div>
+    </div>
+    <div class="row boxMovie">
+        <div class="col-md-12">
+            <h1 class="text-center">Aqui você encontra os melhores filmes!</h1>
+            <h2 class="text-center" style="margin-bottom: 30px;">Se quiser assistí-los, entre em contato comigo para a PF não pegar
+                 <img src="{% static 'images/icons/police-car.png' %}" style="height: 50px"></h2>
+            <img class="rounded mx-auto d-block" src="{% static 'images/icons/risk-skull.png' %}" style="height: 200px; margin-bottom: 15px;">
+            <h2 class="text-center" style="color: red">Diga não a pirataria!</h2>
+        </div>
+    </div>
+</div>
+{% endblock body_block %}

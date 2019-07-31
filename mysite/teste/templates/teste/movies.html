@@ -11,13 +11,12 @@
     <div class="row boxMovie">
         {% if movies %}
         {% for movie in movies %}
-        <div class="col-md-3">
+        <div class="col-sm-3">
             <div class="list-group">
                 <span class="list-group-item"><img class="poster" src="{{movie.poster}}"></span>
-                <div class="col"><hr></div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-sm-3">
             <div class="list-group">
                 <label class="list-group-item"><a href="{% url 'teste:info' movie.id %}"><strong>Título:</strong> {{movie.titulo}}</label></a>
                 <label class="list-group-item"><strong>Gênero:</strong> {{movie.genero}}</label> 
@@ -30,12 +29,7 @@
                     </a>
                 </label>
                 {% endif %}
-                <!--<label class="list-group-item">
-                    <a href="{% url 'teste:delete' movie.id %}" class="btn btn-dark mr-sm-2 my-2 my-lg-0" role='button' id="removeList" style="visibility: hidden">
-                        <img src=" {% static 'images/icons/x-button.png' %}" id="icon" alt="">
-                        <span> Remover da minha lista</span>
-                    </a>
-                </label>-->
+               
                 <div class="col"><hr></div>
             </div>
         </div>
